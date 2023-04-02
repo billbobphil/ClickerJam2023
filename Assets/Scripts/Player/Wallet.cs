@@ -27,7 +27,6 @@ namespace Player
 
         public void AddMoney(long amountToAdd)
         {
-            Debug.Log("Here");
             money += (ulong)amountToAdd;
             UpdateMoneyRemainingText();
         }

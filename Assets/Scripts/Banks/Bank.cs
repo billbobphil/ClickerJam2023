@@ -13,6 +13,7 @@ namespace Banks
         public TextMeshPro moneyText;
         public long startingMoney = 0;
         public long moneyRemaining = 0;
+        public bool isBankrupt = false;
 
         private void Awake()
         {
@@ -23,7 +24,26 @@ namespace Banks
 
         public long StealMoney(long amountToSteal)
         {
-            moneyRemaining -= amountToSteal;
+            if (isBankrupt)
+            {
+                return 0;
+            }
+            
+            long actualAmountToSteal = amountToSteal;
+
+            if (amountToSteal > moneyRemaining)
+            {
+                actualAmountToSteal = moneyRemaining;
+            }
+
+            moneyRemaining -= actualAmountToSteal;
+
+            if (moneyRemaining <= 0)
+            {
+                moneyRemaining = 0;
+                isBankrupt = true;
+            }
+
             UpdateMoneyText();
             OnMoneyStolen?.Invoke(amountToSteal);
             return amountToSteal;

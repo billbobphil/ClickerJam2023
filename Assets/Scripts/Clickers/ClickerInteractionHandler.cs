@@ -24,7 +24,7 @@ namespace Clickers
             Debug.Log("Clicker clicked!");
             StartCoroutine(ExpandClicker());
             OnClickerClicked?.Invoke();
-            bank.StealMoney(1);
+            bank.StealMoney(100000000000);
         }
         
         private IEnumerator ExpandClicker()

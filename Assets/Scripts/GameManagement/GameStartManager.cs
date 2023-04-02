@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Banks;
 using Clickers;
 using UnityEngine;
@@ -6,17 +9,44 @@ namespace GameManagement
 {
     public class GameStartManager : MonoBehaviour
     {
+        public static int AscensionLevel = 0;
         public Bank bankPrefab;
         public ClickerInteractionHandler clickerPrefab;
         public Transform bankSpawnPoint;
         public Transform clickerSpawnPoint;
-        
+        public List<Bank> registeredBanks = new(); 
         
         private void Awake()
         {
-            Bank createdBank = Instantiate(bankPrefab, bankSpawnPoint.position, Quaternion.identity);
-            ClickerInteractionHandler createdClicker = Instantiate(clickerPrefab, clickerSpawnPoint.position, Quaternion.identity);
-            createdClicker.bank = createdBank;
+            for (int i = 0; i < AscensionLevel + 1; i++)
+            {
+                //TODO: will need scaling and spawning logic to be able to fit multiple banks.
+                Bank createdBank = Instantiate(bankPrefab, bankSpawnPoint.position, Quaternion.identity);
+                ClickerInteractionHandler createdClicker = Instantiate(clickerPrefab, clickerSpawnPoint.position, Quaternion.identity);
+                createdClicker.bank = createdBank;
+                registeredBanks.Add(createdBank);
+            }
+        }
+
+        private void OnEnable()
+        {
+            Bank.OnMoneyStolen += OnMoneyStolen;
+        }
+        
+        private void OnDisable()
+        {
+            Bank.OnMoneyStolen -= OnMoneyStolen;
+        }
+        
+        private void OnMoneyStolen(long amountStolen)
+        {
+            bool allBankrupt = registeredBanks.All(bank => bank.isBankrupt);
+            
+            if (allBankrupt)
+            {
+                Debug.Log("All banks are bankrupt! - Victory (Ascension)");
+                //TODO: create prestige/end-game routine
+            }
         }
     }
 }

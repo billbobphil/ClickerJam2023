@@ -421,9 +421,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bankPrefab: {fileID: 3320965547193025882, guid: abe3b72713ee7ee43b5bd68de8bafe03, type: 3}
-  clickerPrefab: {fileID: 4935778411833866519, guid: ac0a9607dd96df845921c05f395ee494, type: 3}
+  clicker: {fileID: 598187731950604326, guid: ac0a9607dd96df845921c05f395ee494, type: 3}
   bankSpawnPoint: {fileID: 2056063787}
   clickerSpawnPoint: {fileID: 473641261}
+  registeredBanks: []
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +462,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000017d6bbc
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

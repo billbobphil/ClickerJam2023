@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace Clickers
 {
-    public class ClickerInteractionHandler : MonoBehaviour
+    public class ClickerClickHandler : MonoBehaviour
     {
-        public delegate void ClickerClicked();
-        public static event ClickerClicked OnClickerClicked;
-        
-        public Bank bank;
+        public Clicker clicker;
         public float baseScale = 1f;
         public float expandScale = 1f;
+        public bool isCriticalClicker = false;
 
         private void Awake()
         {
@@ -21,10 +19,8 @@ namespace Clickers
         
         private void OnMouseDown()
         {
-            Debug.Log("Clicker clicked!");
+            clicker.StealMoney(isCriticalClicker);
             StartCoroutine(ExpandClicker());
-            OnClickerClicked?.Invoke();
-            bank.StealMoney(100000000000);
         }
         
         private IEnumerator ExpandClicker()

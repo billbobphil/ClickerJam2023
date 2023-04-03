@@ -11,7 +11,7 @@ namespace GameManagement
     {
         public static int AscensionLevel = 0;
         public Bank bankPrefab;
-        public ClickerInteractionHandler clickerPrefab;
+        public Clicker clicker;
         public Transform bankSpawnPoint;
         public Transform clickerSpawnPoint;
         public List<Bank> registeredBanks = new(); 
@@ -22,7 +22,7 @@ namespace GameManagement
             {
                 //TODO: will need scaling and spawning logic to be able to fit multiple banks.
                 Bank createdBank = Instantiate(bankPrefab, bankSpawnPoint.position, Quaternion.identity);
-                ClickerInteractionHandler createdClicker = Instantiate(clickerPrefab, clickerSpawnPoint.position, Quaternion.identity);
+                Clicker createdClicker = Instantiate(clicker, clickerSpawnPoint.position, Quaternion.identity);
                 createdClicker.bank = createdBank;
                 registeredBanks.Add(createdBank);
             }

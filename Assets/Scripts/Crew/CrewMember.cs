@@ -31,5 +31,11 @@ namespace Crew
             bank = newBank;
             StartStealing();
         }
+
+        public void RemoveFromBank()
+        {
+            bank = null;
+            StopCoroutine(StealMoney());
+        }
     }
 }

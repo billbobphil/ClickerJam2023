@@ -16,12 +16,10 @@ namespace Clickers
         public float criticalClickSpawnDelayMinimum = 5f;
         public float criticalClickSpawnDelayMaximum = 10f;
         public float criticalClickDuration = 5f;
-        public float failHeistChance = 50f;
         
         private void Awake()
         {
             criticalClickHandler.gameObject.SetActive(false);
-            Debug.Log($"Failure Chance: {failHeistChance}");
         }
         
         private void Start()
@@ -57,18 +55,7 @@ namespace Clickers
         public void StealMoney(bool isCriticalClick)
         {
             long amountInJeopardy = isCriticalClick ? baseAmountToSteal * criticalClickMultiplier : baseAmountToSteal;
-            
-            if (Random.Range(0f, 100f) > failHeistChance)
-            {
-                Debug.Log("Stole Money!");
-                bank.StealMoney(amountInJeopardy);
-            }
-            else
-            {
-                Debug.Log("COPS GOTCHA!");
-                //TODO: lose some money?
-            }
+            bank.StealMoney(amountInJeopardy);
         }
-        
     }
 }

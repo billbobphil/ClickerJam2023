@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Banks
 {
@@ -14,6 +15,11 @@ namespace Banks
         public long startingMoney = 0;
         public long moneyRemaining = 0;
         public bool isBankrupt = false;
+        private int _crewMembersAtBank = 0;
+        public TextMeshPro crewMembersAtBankText;
+        
+        //upgradeable? - should be sourced from some sort of upgrade manager
+        public float failHeistChance = 50f;
 
         private void Awake()
         {
@@ -21,7 +27,24 @@ namespace Banks
             UpdateMoneyText();
             bankNameText.text = "<Cool Name> Bank";
         }
-
+        
+        public void AddCrewMember()
+        {
+            _crewMembersAtBank++;
+            UpdateCrewMembersAtBankText();
+        }
+        
+        public void RemoveCrewMember()
+        {
+            _crewMembersAtBank--;
+            UpdateCrewMembersAtBankText();
+        }
+        
+        private void UpdateCrewMembersAtBankText()
+        {
+            crewMembersAtBankText.text = $"{_crewMembersAtBank}";
+        }
+        
         public long StealMoney(long amountToSteal)
         {
             if (isBankrupt)
@@ -29,24 +52,34 @@ namespace Banks
                 return 0;
             }
             
-            long actualAmountToSteal = amountToSteal;
-
-            if (amountToSteal > moneyRemaining)
+            if (Random.Range(0f, 100f) > failHeistChance)
             {
-                actualAmountToSteal = moneyRemaining;
+                Debug.Log("Stole Money!");
+                long actualAmountToSteal = amountToSteal;
+
+                if (amountToSteal > moneyRemaining)
+                {
+                    actualAmountToSteal = moneyRemaining;
+                }
+
+                moneyRemaining -= actualAmountToSteal;
+
+                if (moneyRemaining <= 0)
+                {
+                    moneyRemaining = 0;
+                    isBankrupt = true;
+                }
+
+                UpdateMoneyText();
+                OnMoneyStolen?.Invoke(amountToSteal);
+                return amountToSteal;
             }
-
-            moneyRemaining -= actualAmountToSteal;
-
-            if (moneyRemaining <= 0)
+            else
             {
-                moneyRemaining = 0;
-                isBankrupt = true;
+                Debug.Log("COPS GOTCHA!");
+                //TODO: lose some money?
+                return -1;
             }
-
-            UpdateMoneyText();
-            OnMoneyStolen?.Invoke(amountToSteal);
-            return amountToSteal;
         }
         
         private void UpdateMoneyText()

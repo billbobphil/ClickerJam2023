@@ -771,6 +771,7 @@ GameObject:
   - component: {fileID: 1293592160}
   - component: {fileID: 1293592159}
   - component: {fileID: 1293592161}
+  - component: {fileID: 1293592162}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -822,6 +823,28 @@ MonoBehaviour:
   crew: []
   availableCrewMembers: []
   assignedCrewMembers: []
+--- !u!114 &1293592162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293592158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f9d6767dd3413c9c5903aaf19f744a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseAmountToSteal: 1
+  intimidationLevel: 0
+  intimidationMultiplier: 10
+  timeBetweenCrewMemberSteals: 5
+  criticalClickMultiplier: 10
+  criticalClickSpawnDelayMinimum: 5
+  criticalClickSpawnDelayMaximum: 10
+  criticalClickDuration: 5
+  failHeistChance: 50
+  heistFailReduction: 0
 --- !u!1 &1307936334
 GameObject:
   m_ObjectHideFlags: 0

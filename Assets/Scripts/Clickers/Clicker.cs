@@ -14,8 +14,8 @@ namespace Clickers
 
         private void Awake()
         {
-            criticalClickHandler.gameObject.SetActive(false);
             _playerAttributes = GameObject.FindWithTag("Player").GetComponent<Attributes>();
+            criticalClickHandler.gameObject.SetActive(false);
         }
         
         private void Start()
@@ -32,6 +32,8 @@ namespace Clickers
                     yield return new WaitForSeconds(1);
                     continue;
                 }
+                
+                Debug.Log(_playerAttributes);
                 
                 float randomDelay = Random.Range(_playerAttributes.criticalClickSpawnDelayMinimum, _playerAttributes.criticalClickSpawnDelayMaximum);
                 yield return new WaitForSecondsRealtime(randomDelay);

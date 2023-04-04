@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Banks;
+using Player;
 using UnityEngine;
 
 namespace Crew
@@ -7,10 +8,13 @@ namespace Crew
     public class CrewMember : MonoBehaviour
     {
         public Bank bank;
+        private Attributes _playerAttributes;
         
-        //upgradeable? - sourced from an upgrade manager?
-        public float timeBetweenSteals = 5f;
-
+        private void Awake()
+        {
+            _playerAttributes = GameObject.FindWithTag("Player").GetComponent<Attributes>();
+        }
+        
         public void StartStealing()
         {
             StartCoroutine(StealMoney());
@@ -20,9 +24,9 @@ namespace Crew
         {
             for (;;)
             {
-                yield return new WaitForSecondsRealtime(timeBetweenSteals);
-                Debug.Log("Crew member stole");
-                bank.StealMoney(1);    
+                yield return new WaitForSecondsRealtime(_playerAttributes.timeBetweenCrewMemberSteals);
+                // Debug.Log("Crew member stole");
+                bank.StealMoney(_playerAttributes.GetAmountToSteal());    
             }
         }
 

@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Banks;
 using Clickers;
 using UnityEngine;
+using Utilities;
 
 namespace GameManagement
 {
@@ -14,7 +14,8 @@ namespace GameManagement
         public Clicker clicker;
         public Transform bankSpawnPoint;
         public Transform clickerSpawnPoint;
-        public List<Bank> registeredBanks = new(); 
+        public List<Bank> registeredBanks = new();
+        public Timer timer;
         
         private void Awake()
         {
@@ -26,6 +27,8 @@ namespace GameManagement
                 createdClicker.bank = createdBank;
                 registeredBanks.Add(createdBank);
             }
+            
+            timer.StartTimer();
         }
 
         private void OnEnable()

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Banks;
+using Player;
 using UnityEngine;
 
 namespace Clickers
@@ -9,17 +10,12 @@ namespace Clickers
         public Bank bank;
         public ClickerClickHandler normalClickerHandler;
         public ClickerClickHandler criticalClickHandler;
-        
-        //upgradeable? - should be sourced from some sort of upgrade manager
-        public int criticalClickMultiplier = 10;
-        public int baseAmountToSteal = 1;
-        public float criticalClickSpawnDelayMinimum = 5f;
-        public float criticalClickSpawnDelayMaximum = 10f;
-        public float criticalClickDuration = 5f;
-        
+        private Attributes _playerAttributes;
+
         private void Awake()
         {
             criticalClickHandler.gameObject.SetActive(false);
+            _playerAttributes = GameObject.FindWithTag("Player").GetComponent<Attributes>();
         }
         
         private void Start()
@@ -37,7 +33,7 @@ namespace Clickers
                     continue;
                 }
                 
-                float randomDelay = Random.Range(criticalClickSpawnDelayMinimum, criticalClickSpawnDelayMaximum);
+                float randomDelay = Random.Range(_playerAttributes.criticalClickSpawnDelayMinimum, _playerAttributes.criticalClickSpawnDelayMaximum);
                 yield return new WaitForSecondsRealtime(randomDelay);
                 
                 //Get position nested within the position of the parent clicker
@@ -47,14 +43,15 @@ namespace Clickers
                 criticalClickHandler.transform.position = bounds.center + new Vector3(offsetX, offsetY, 0);
 
                 criticalClickHandler.gameObject.SetActive(true);
-                yield return new WaitForSecondsRealtime(criticalClickDuration);
+                yield return new WaitForSecondsRealtime(_playerAttributes.criticalClickDuration);
                 criticalClickHandler.gameObject.SetActive(false);
             }
         }
 
         public void StealMoney(bool isCriticalClick)
         {
-            long amountInJeopardy = isCriticalClick ? baseAmountToSteal * criticalClickMultiplier : baseAmountToSteal;
+            long intimidationAdjustedBase = _playerAttributes.GetAmountToSteal();
+            long amountInJeopardy = isCriticalClick ? intimidationAdjustedBase * _playerAttributes.criticalClickMultiplier : intimidationAdjustedBase;
             bank.StealMoney(amountInJeopardy);
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using Banks;
 using TMPro;
 using UnityEngine;

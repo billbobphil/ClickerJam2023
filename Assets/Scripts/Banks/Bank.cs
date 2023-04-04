@@ -1,4 +1,4 @@
-using System;
+using Player;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,15 +17,14 @@ namespace Banks
         public bool isBankrupt = false;
         private int _crewMembersAtBank = 0;
         public TextMeshPro crewMembersAtBankText;
-        
-        //upgradeable? - should be sourced from some sort of upgrade manager
-        public float failHeistChance = 50f;
+        private Attributes _playerAttributes;
 
         private void Awake()
         {
             moneyRemaining = startingMoney;
             UpdateMoneyText();
             bankNameText.text = "<Cool Name> Bank";
+            _playerAttributes = GameObject.FindWithTag("Player").GetComponent<Attributes>();
         }
         
         public void AddCrewMember()
@@ -52,9 +51,9 @@ namespace Banks
                 return 0;
             }
             
-            if (Random.Range(0f, 100f) > failHeistChance)
+            if (Random.Range(0f, 100f) > _playerAttributes.failHeistChance - _playerAttributes.heistFailReduction)
             {
-                Debug.Log("Stole Money!");
+                // Debug.Log("Stole Money!");
                 long actualAmountToSteal = amountToSteal;
 
                 if (amountToSteal > moneyRemaining)
@@ -76,7 +75,7 @@ namespace Banks
             }
             else
             {
-                Debug.Log("COPS GOTCHA!");
+                // Debug.Log("COPS GOTCHA!");
                 //TODO: lose some money?
                 return -1;
             }

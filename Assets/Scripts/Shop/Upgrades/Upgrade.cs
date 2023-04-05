@@ -2,7 +2,8 @@
 {
     public abstract class Upgrade
     {
-        public ulong cost;
+        public ulong Cost;
+        public string UpgradeName;
 
         public abstract void ApplyUpgrade();
     }

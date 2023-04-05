@@ -8,7 +8,9 @@ namespace Shop.UpgradeCategories
     {
         public CrewMember crewMemberPrefab;
         public TextMeshProUGUI newCrewMemberCostText;
+        public TextMeshProUGUI newCrewUpgradeNameText;
         public TextMeshProUGUI crewTrainingCostText;
+        public TextMeshProUGUI crewTrainingUpgradeNameText;
         private void Start()
         {
             UpgradeTracks.Add(0, BuildNewCrewMemberTrack());
@@ -20,56 +22,64 @@ namespace Shop.UpgradeCategories
             UpgradeTrack addCrewMemberTrack = new()
             {
                 TrackName = "New Crew Member",
-                TrackDescription = "New crew members can be assigned to banks and will steal automatically.",
-                CostText = newCrewMemberCostText
+                GetTrackDescription = GetTrackDescriptionForCrewMembers,
+                CostText = newCrewMemberCostText,
+                UpgradeNameText = newCrewUpgradeNameText
             };
             
             AddCrewMemberUpgrade upgradeOne = new()
             {
-                cost = 100,
-                CrewMemberPrefab = crewMemberPrefab
+                Cost = 100,
+                CrewMemberPrefab = crewMemberPrefab,
+                UpgradeName = "New Guy 1"
             };
             addCrewMemberTrack.Upgrades.Add(upgradeOne);
             
             AddCrewMemberUpgrade upgradeTwo = new()
             {
-                cost = 10000,
-                CrewMemberPrefab = crewMemberPrefab
+                Cost = 10000,
+                CrewMemberPrefab = crewMemberPrefab,
+                UpgradeName = "New Guy 2"
             };
             addCrewMemberTrack.Upgrades.Add(upgradeTwo);
             
             AddCrewMemberUpgrade upgradeThree = new()
             {
-                cost = 1000000,
-                CrewMemberPrefab = crewMemberPrefab
+                Cost = 1000000,
+                CrewMemberPrefab = crewMemberPrefab,
+                UpgradeName = "New Guy 3"
             };
             addCrewMemberTrack.Upgrades.Add(upgradeThree);
             
             AddCrewMemberUpgrade upgradeFour = new()
             {
-                cost = 10000000,
-                CrewMemberPrefab = crewMemberPrefab
+                Cost = 10000000,
+                CrewMemberPrefab = crewMemberPrefab,
+                UpgradeName = "New Guy 4"
             };
             addCrewMemberTrack.Upgrades.Add(upgradeFour);
             
             AddCrewMemberUpgrade upgradeFive = new()
             {
-                cost = 100000000,
-                CrewMemberPrefab = crewMemberPrefab
+                Cost = 100000000,
+                CrewMemberPrefab = crewMemberPrefab,
+                UpgradeName = "New Guy 5"
             };
             addCrewMemberTrack.Upgrades.Add(upgradeFive);
             
             AddCrewMemberUpgrade upgradeSix = new()
             {
-                cost = 1000000000,
-                CrewMemberPrefab = crewMemberPrefab
+                Cost = 1000000000,
+                CrewMemberPrefab = crewMemberPrefab,
+                UpgradeName = "New Guy 6"
             };
             addCrewMemberTrack.Upgrades.Add(upgradeSix);
             
             AddCrewMemberUpgrade upgradeSeven = new()
             {
-                cost = 10000000000,
-                CrewMemberPrefab = crewMemberPrefab
+                Cost = 10000000000,
+                CrewMemberPrefab = crewMemberPrefab,
+                UpgradeName = "New Guy 7"
             };
             addCrewMemberTrack.Upgrades.Add(upgradeSeven);
             
@@ -81,55 +91,68 @@ namespace Shop.UpgradeCategories
             UpgradeTrack crewTrainingTrack = new()
             {
                 TrackName = "Crew Training",
-                TrackDescription = "Crew members will steal more often.",
-                CostText = crewTrainingCostText
+                GetTrackDescription = GetTrackDescriptionForCrewTraining,
+                CostText = crewTrainingCostText,
+                UpgradeNameText = crewTrainingUpgradeNameText
             };
             
             CrewTrainingUpgrade upgradeOne = new()
             {
-                cost = 100,
-                TimeBetweenSteals = 4
+                Cost = 100,
+                TimeBetweenSteals = 4,
+                UpgradeName = "Sleight of Hand"
             };
             crewTrainingTrack.Upgrades.Add(upgradeOne);
             
             CrewTrainingUpgrade upgradeTwo = new()
             {
-                cost = 10000,
-                TimeBetweenSteals = 3
+                Cost = 10000,
+                TimeBetweenSteals = 3,
+                UpgradeName = "Lock Picking"
             };
             crewTrainingTrack.Upgrades.Add(upgradeTwo);
             
             CrewTrainingUpgrade upgradeThree = new()
             {
-                cost = 1000000,
-                TimeBetweenSteals = 2
+                Cost = 1000000,
+                TimeBetweenSteals = 2,
+                UpgradeName = "Safe Cracking"
             };
             crewTrainingTrack.Upgrades.Add(upgradeThree);
             
             CrewTrainingUpgrade upgradeFour = new()
             {
-                cost = 10000000,
-                TimeBetweenSteals = 1
+                Cost = 10000000,
+                TimeBetweenSteals = 1,
+                UpgradeName = "Burglary"
             };
             crewTrainingTrack.Upgrades.Add(upgradeFour);
             
             CrewTrainingUpgrade upgradeFive = new()
             {
-                cost = 100000000,
-                TimeBetweenSteals = 0.5f
+                Cost = 100000000,
+                TimeBetweenSteals = 0.5f,
+                UpgradeName = "Master Thief"
             };
             crewTrainingTrack.Upgrades.Add(upgradeFive);
             
             return crewTrainingTrack;
         }
 
-        // public override void UpdateUpgradeCostText()
-        // {
-        //     newCrewMemberCostText.text = UpgradeTracks[0].CurrentLevel >= UpgradeTracks[0].Upgrades.Count ? "MAX" 
-        //         : $"${UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel].cost.ToString()}";
-        //
-        //     crewTrainingCostText.text = UpgradeTracks[1].CurrentLevel >= UpgradeTracks[1].Upgrades.Count ? "MAX" 
-        //         : $"${UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel].cost.ToString()}";
-        // }
+        private string GetTrackDescriptionForCrewMembers()
+        {
+            string baseMessage = "New crew members can be assigned to banks and will steal automatically.";
+            string effect = "Effect: Add one new crew member";
+            Upgrade upgrade = UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel];
+            string cost = $"Cost: {upgrade.Cost}";
+            
+            return baseMessage + "\n\n" + effect + "\n\n" + cost;
+        }
+
+        private string GetTrackDescriptionForCrewTraining()
+        {
+            string baseMessage = "Crew members will steal more often.";
+            return "TBD";
+        }
     }
 }

@@ -11,5 +11,8 @@ namespace Shop.UpgradeCategories
         public string TrackName;
         public string TrackDescription;
         public TextMeshProUGUI CostText;
+        public TextMeshProUGUI UpgradeNameText;
+        public delegate string GetTrackDescriptionDelegate();
+        public GetTrackDescriptionDelegate GetTrackDescription;
     }
 }

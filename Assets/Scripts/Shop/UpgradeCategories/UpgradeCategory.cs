@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Shop.Upgrades;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Shop.UpgradeCategories
@@ -18,12 +16,15 @@ namespace Shop.UpgradeCategories
             upgradePanel.SetActive(false);
         }
 
-        public void UpdateUpgradeCostText()
+        public void UpdateUpgradeCostAndNameText()
         {
             foreach(KeyValuePair<int, UpgradeTrack> track in UpgradeTracks)
             {
                 track.Value.CostText.text = track.Value.CurrentLevel >= track.Value.Upgrades.Count ? "MAX" 
-                    : $"${track.Value.Upgrades[track.Value.CurrentLevel].cost.ToString()}";
+                    : $"${track.Value.Upgrades[track.Value.CurrentLevel].Cost.ToString()}";
+
+                track.Value.UpgradeNameText.text = track.Value.CurrentLevel >= track.Value.Upgrades.Count ? "MAX" 
+                    : $"{track.Value.Upgrades[track.Value.CurrentLevel].UpgradeName}";
             }
         }
     }

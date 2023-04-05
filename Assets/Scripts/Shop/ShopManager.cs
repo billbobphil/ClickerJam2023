@@ -31,7 +31,7 @@ namespace Shop
             {
                 shopSubPanelController.ShowSubShopPanel(category);
                 category.upgradePanel.SetActive(true);
-                category.UpdateUpgradeCostText();
+                category.UpdateUpgradeCostAndNameText();
             }
         }
 
@@ -63,7 +63,7 @@ namespace Shop
             }
                 
             Upgrade upgrade = track.Upgrades[track.CurrentLevel];
-            ulong cost = upgrade.cost;
+            ulong cost = upgrade.Cost;
             //if they can afford it
             if (_playerWallet.money >= cost)
             {
@@ -75,7 +75,8 @@ namespace Shop
                 //increment the upgrade level
                 track.CurrentLevel++;
                 //Update cost text
-                category.UpdateUpgradeCostText();
+                category.UpdateUpgradeCostAndNameText();
+                tooltipDescription.text = track.GetTrackDescription();
             }
             else
             {
@@ -92,7 +93,7 @@ namespace Shop
             UpgradeTrack track = category.UpgradeTracks[trackId];
 
             tooltipTitle.text = track.TrackName;
-            tooltipDescription.text = track.TrackDescription;
+            tooltipDescription.text = track.GetTrackDescription();
 
             tooltipPanel.SetActive(true);
         }

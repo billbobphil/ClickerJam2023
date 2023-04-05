@@ -20,7 +20,8 @@ namespace Shop.UpgradeCategories
             UpgradeTrack addCrewMemberTrack = new()
             {
                 TrackName = "New Crew Member",
-                TrackDescription = "New crew members can be assigned to banks and will steal automatically."
+                TrackDescription = "New crew members can be assigned to banks and will steal automatically.",
+                CostText = newCrewMemberCostText
             };
             
             AddCrewMemberUpgrade upgradeOne = new()
@@ -80,7 +81,8 @@ namespace Shop.UpgradeCategories
             UpgradeTrack crewTrainingTrack = new()
             {
                 TrackName = "Crew Training",
-                TrackDescription = "Crew members will steal more often."
+                TrackDescription = "Crew members will steal more often.",
+                CostText = crewTrainingCostText
             };
             
             CrewTrainingUpgrade upgradeOne = new()
@@ -121,13 +123,13 @@ namespace Shop.UpgradeCategories
             return crewTrainingTrack;
         }
 
-        public override void UpdateUpgradeCostText()
-        {
-            newCrewMemberCostText.text = UpgradeTracks[0].CurrentLevel >= UpgradeTracks[0].Upgrades.Count ? "MAX" 
-                : $"${UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel].cost.ToString()}";
-
-            crewTrainingCostText.text = UpgradeTracks[1].CurrentLevel >= UpgradeTracks[1].Upgrades.Count ? "MAX" 
-                : $"${UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel].cost.ToString()}";
-        }
+        // public override void UpdateUpgradeCostText()
+        // {
+        //     newCrewMemberCostText.text = UpgradeTracks[0].CurrentLevel >= UpgradeTracks[0].Upgrades.Count ? "MAX" 
+        //         : $"${UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel].cost.ToString()}";
+        //
+        //     crewTrainingCostText.text = UpgradeTracks[1].CurrentLevel >= UpgradeTracks[1].Upgrades.Count ? "MAX" 
+        //         : $"${UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel].cost.ToString()}";
+        // }
     }
 }

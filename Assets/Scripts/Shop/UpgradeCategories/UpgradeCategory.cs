@@ -18,6 +18,13 @@ namespace Shop.UpgradeCategories
             upgradePanel.SetActive(false);
         }
 
-        public abstract void UpdateUpgradeCostText();
+        public void UpdateUpgradeCostText()
+        {
+            foreach(KeyValuePair<int, UpgradeTrack> track in UpgradeTracks)
+            {
+                track.Value.CostText.text = track.Value.CurrentLevel >= track.Value.Upgrades.Count ? "MAX" 
+                    : $"${track.Value.Upgrades[track.Value.CurrentLevel].cost.ToString()}";
+            }
+        }
     }
 }

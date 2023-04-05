@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Shop.Upgrades;
+using TMPro;
 
 namespace Shop.UpgradeCategories
 {
@@ -9,5 +10,6 @@ namespace Shop.UpgradeCategories
         public List<Upgrade> Upgrades = new();
         public string TrackName;
         public string TrackDescription;
+        public TextMeshProUGUI CostText;
     }
 }

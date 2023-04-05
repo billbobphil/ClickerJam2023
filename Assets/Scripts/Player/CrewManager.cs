@@ -13,11 +13,15 @@ namespace Player
 
         private void Awake()
         {
-            availableCrewMembers = crew;
+            foreach (CrewMember crewMember in crew)
+            {
+                availableCrewMembers.Add(crewMember);
+            }
         }
-        
+
         public void AddNewCrewMember(CrewMember crewMember)
         {
+            Debug.Log("Got new crew member!");
             crew.Add(crewMember);
             availableCrewMembers.Add(crewMember);
         }
@@ -48,6 +52,11 @@ namespace Player
                 bank.AddCrewMember();
                 availableCrewMembers.Remove(crewMember);
                 assignedCrewMembers.Add(crewMember);
+            }
+            else
+            {
+                Debug.Log("No available crew members");
+                //TODO: show a message of some sort
             }
         }
     }

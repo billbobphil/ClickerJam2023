@@ -41,7 +41,7 @@ namespace GameManagement
             Bank.OnMoneyStolen -= OnMoneyStolen;
         }
         
-        private void OnMoneyStolen(long amountStolen)
+        private void OnMoneyStolen(ulong amountStolen)
         {
             bool allBankrupt = registeredBanks.All(bank => bank.isBankrupt);
             

@@ -33,8 +33,6 @@ namespace Clickers
                     continue;
                 }
                 
-                Debug.Log(_playerAttributes);
-                
                 float randomDelay = Random.Range(_playerAttributes.criticalClickSpawnDelayMinimum, _playerAttributes.criticalClickSpawnDelayMaximum);
                 yield return new WaitForSecondsRealtime(randomDelay);
                 

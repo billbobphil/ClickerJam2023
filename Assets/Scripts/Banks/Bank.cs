@@ -7,7 +7,7 @@ namespace Banks
 {
     public class Bank : MonoBehaviour
     {
-        public delegate void MoneyStolen(long amountStolen);
+        public delegate void MoneyStolen(ulong amountStolen);
         public static event MoneyStolen OnMoneyStolen;
         
         public TextMeshPro bankNameText;
@@ -70,7 +70,7 @@ namespace Banks
                 }
 
                 UpdateMoneyText();
-                OnMoneyStolen?.Invoke(amountToSteal);
+                OnMoneyStolen?.Invoke((ulong)amountToSteal);
                 return amountToSteal;
             }
             else

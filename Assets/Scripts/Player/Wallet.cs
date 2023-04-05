@@ -24,15 +24,15 @@ namespace Player
             UpdateMoneyRemainingText();
         }
 
-        public void AddMoney(long amountToAdd)
+        public void AddMoney(ulong amountToAdd)
         {
-            money += (ulong)amountToAdd;
+            money += amountToAdd;
             UpdateMoneyRemainingText();
         }
         
-        public void RemoveMoney(long amountToRemove)
+        public void RemoveMoney(ulong amountToRemove)
         {
-            money -= (ulong)amountToRemove;
+            money -= amountToRemove;
             UpdateMoneyRemainingText();
         }
 

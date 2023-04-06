@@ -1,6 +1,7 @@
 using Player;
 using TMPro;
 using UnityEngine;
+using Utilities;
 using Random = UnityEngine.Random;
 
 namespace Banks
@@ -96,7 +97,7 @@ namespace Banks
         
         private void UpdateMoneyText()
         {
-            moneyText.text = $"${moneyRemaining:n0}";
+            moneyText.text = StaticHelpers.FormatMoney((ulong)moneyRemaining);
         }
     }
 }

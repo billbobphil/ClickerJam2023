@@ -1,5 +1,6 @@
 ﻿using Shop.Upgrades;
 using TMPro;
+using Utilities;
 
 namespace Shop.UpgradeCategories
 {
@@ -76,7 +77,7 @@ namespace Shop.UpgradeCategories
             string baseMessage = "The various mitigation tools will help reduce the chance that you're caught by the police.";
             Upgrade upgrade = UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel];
             string name = $"{upgrade.UpgradeName}";
-            string cost = $"Cost: ${upgrade.Cost}";
+            string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string effect = $"Effect: Chance of being caught by the cops reduced by {((MitigationToolsUpgrade)upgrade).newHeistFailReduction} percent";
             
             string message = name + "\n\n" + baseMessage + "\n\n" + effect + "\n\n" + cost;

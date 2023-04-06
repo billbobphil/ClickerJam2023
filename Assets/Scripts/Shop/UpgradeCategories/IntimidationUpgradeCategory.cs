@@ -1,5 +1,6 @@
 ﻿using Shop.Upgrades;
 using TMPro;
+using Utilities;
 
 namespace Shop.UpgradeCategories
 {
@@ -129,7 +130,7 @@ namespace Shop.UpgradeCategories
             string baseMessage = "Increase your intimidation multiplier.";
             Upgrade upgrade = UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel];
             string name = $"{upgrade.UpgradeName}";
-            string cost = $"Cost: ${upgrade.Cost}";
+            string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string effect = $"Effect: Intimidation multiplier set to {((MaskUpgrade)upgrade).newMultiplier}";
             
             string message = name + "\n\n" + baseMessage + "\n\n" + effect + "\n\n" + cost;
@@ -142,7 +143,7 @@ namespace Shop.UpgradeCategories
             string baseMessage = "Increase your intimidation level.";
             Upgrade upgrade = UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel];
             string name = $"{upgrade.UpgradeName}";
-            string cost = $"Cost: ${upgrade.Cost}";
+            string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string effect = $"Effect: Intimidation level increased by {((GunUpgrade)upgrade).amountToIncreaseBy} points";
             
             string message = name + "\n\n" + baseMessage + "\n\n" + effect + "\n\n" + cost;

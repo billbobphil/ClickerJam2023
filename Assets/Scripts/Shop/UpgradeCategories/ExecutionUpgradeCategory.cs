@@ -1,5 +1,6 @@
 ﻿using Shop.Upgrades;
 using TMPro;
+using Utilities;
 
 namespace Shop.UpgradeCategories
 {
@@ -143,7 +144,7 @@ namespace Shop.UpgradeCategories
             
             Upgrade upgrade = UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel];
             string effect = $"Effect: minimum time between critical opportunities becomes {((PlanningUpgrade)upgrade).newMinTimeBetweenSpawns} seconds, and the maximum time between critical opportunities becomes {((PlanningUpgrade)upgrade).newMaxTimeBetweenSpawns} seconds.";
-            string cost = $"Cost: ${upgrade.Cost}";
+            string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string name = $"{upgrade.UpgradeName}";
             
             return name + "\n\n" + baseMessage  + "\n\n" + effect + "\n\n" + cost;
@@ -155,7 +156,7 @@ namespace Shop.UpgradeCategories
             
             Upgrade upgrade = UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel];
             string effect = $"Effect: critical opportunities now multiply your earnings by {((PracticeUpgrade)upgrade).newCriticalClickModifier}.";
-            string cost = $"Cost: ${upgrade.Cost}";
+            string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string name = $"{upgrade.UpgradeName}";
             
             return name + "\n\n" + baseMessage  + "\n\n" + effect + "\n\n" + cost;

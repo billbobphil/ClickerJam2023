@@ -1,6 +1,7 @@
 ﻿using Crew;
 using Shop.Upgrades;
 using TMPro;
+using Utilities;
 
 namespace Shop.UpgradeCategories
 {
@@ -29,7 +30,7 @@ namespace Shop.UpgradeCategories
             
             AddCrewMemberUpgrade upgradeOne = new()
             {
-                Cost = 100,
+                Cost = 1000000,
                 CrewMemberPrefab = crewMemberPrefab,
                 UpgradeName = "New Guy 1"
             };
@@ -144,7 +145,7 @@ namespace Shop.UpgradeCategories
             string baseMessage = "New crew members can be assigned to banks and will steal automatically.";
             string effect = "Effect: Add one new crew member";
             Upgrade upgrade = UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel];
-            string cost = $"Cost: ${upgrade.Cost}";
+            string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string name = $"{upgrade.UpgradeName}";
             
             return name + "\n\n" + baseMessage  + "\n\n" + effect + "\n\n" + cost;
@@ -155,7 +156,7 @@ namespace Shop.UpgradeCategories
             string baseMessage = "Crew members will steal more often.";
             Upgrade upgrade = UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel];
             string name = $"{upgrade.UpgradeName}";
-            string cost = $"Cost: ${upgrade.Cost}";
+            string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string effect = $"Effect: Time between steals reduced to {((CrewTrainingUpgrade)upgrade).timeBetweenSteals} seconds";
             
             string message = name + "\n\n" + baseMessage + "\n\n" + effect + "\n\n" + cost;

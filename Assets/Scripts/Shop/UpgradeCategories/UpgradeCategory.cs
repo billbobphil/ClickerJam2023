@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 namespace Shop.UpgradeCategories
 {
@@ -21,7 +22,7 @@ namespace Shop.UpgradeCategories
             foreach(KeyValuePair<int, UpgradeTrack> track in UpgradeTracks)
             {
                 track.Value.CostText.text = track.Value.CurrentLevel >= track.Value.Upgrades.Count ? "MAX" 
-                    : $"${track.Value.Upgrades[track.Value.CurrentLevel].Cost.ToString()}";
+                    : $"{StaticHelpers.FormatMoney(track.Value.Upgrades[track.Value.CurrentLevel].Cost)}";
 
                 track.Value.UpgradeNameText.text = track.Value.CurrentLevel >= track.Value.Upgrades.Count ? "MAX" 
                     : $"{track.Value.Upgrades[track.Value.CurrentLevel].UpgradeName}";

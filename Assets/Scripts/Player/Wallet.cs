@@ -1,6 +1,7 @@
 using Banks;
 using TMPro;
 using UnityEngine;
+using Utilities;
 
 namespace Player
 {
@@ -38,7 +39,7 @@ namespace Player
 
         private void UpdateMoneyRemainingText()
         {
-            moneyText.text = $"${money:n0}";
+            moneyText.text = StaticHelpers.FormatMoney(money);
         }
     }
 }

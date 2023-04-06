@@ -11,15 +11,19 @@ namespace Clickers
         public float baseScale = 1f;
         public float expandScale = 1f;
         public bool isCriticalClicker = false;
+        private Camera mainCamera;
 
         private void Awake()
         {
             transform.localScale = new Vector3(baseScale, baseScale, 1);
+            mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         }
         
         private void OnMouseDown()
         {
-            clicker.StealMoney(isCriticalClicker);
+            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition = new Vector3(mousePosition.x, mousePosition.y, 0);
+            clicker.StealMoney(isCriticalClicker, mousePosition);
             StartCoroutine(ExpandClicker());
         }
         

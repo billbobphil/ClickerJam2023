@@ -18,6 +18,8 @@ namespace Banks
         private int _crewMembersAtBank = 0;
         public TextMeshPro crewMembersAtBankText;
         private Attributes _playerAttributes;
+        public GameObject GotMoneyPrefab;
+        public GameObject CaughtByCopsPrefab;
 
         private void Awake()
         {
@@ -44,7 +46,7 @@ namespace Banks
             crewMembersAtBankText.text = $"{_crewMembersAtBank}";
         }
         
-        public long StealMoney(long amountToSteal)
+        public long StealMoney(long amountToSteal, Vector3 mousePosition = default)
         {
             if (isBankrupt)
             {
@@ -71,12 +73,23 @@ namespace Banks
 
                 UpdateMoneyText();
                 OnMoneyStolen?.Invoke((ulong)amountToSteal);
+
+                if (mousePosition != default)
+                {
+                    GameObject newObject = Instantiate(GotMoneyPrefab, mousePosition, Quaternion.identity);
+                    newObject.GetComponent<TextMeshPro>().text = $"${amountToSteal:n0}";
+                }
+                
                 return amountToSteal;
             }
             else
             {
                 // Debug.Log("COPS GOTCHA!");
-                //TODO: lose some money?
+                if(mousePosition != default)
+                {
+                    Instantiate(CaughtByCopsPrefab, mousePosition, Quaternion.identity);
+                }
+                
                 return -1;
             }
         }

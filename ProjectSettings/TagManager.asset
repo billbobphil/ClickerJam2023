@@ -45,3 +45,6 @@ TagManager:
   - name: Clickers
     uniqueID: 3161160961
     locked: 0
+  - name: Popups
+    uniqueID: 3778500111
+    locked: 0

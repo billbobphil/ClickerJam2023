@@ -48,11 +48,11 @@ namespace Clickers
             }
         }
 
-        public void StealMoney(bool isCriticalClick)
+        public void StealMoney(bool isCriticalClick, Vector3 mousePosition)
         {
             long intimidationAdjustedBase = _playerAttributes.GetAmountToSteal();
             long amountInJeopardy = isCriticalClick ? intimidationAdjustedBase * _playerAttributes.criticalClickMultiplier : intimidationAdjustedBase;
-            bank.StealMoney(amountInJeopardy);
+            bank.StealMoney(amountInJeopardy, mousePosition);
         }
     }
 }

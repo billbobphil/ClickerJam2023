@@ -32,7 +32,7 @@ namespace Shop
                 shopSubPanelController.ShowSubShopPanel(category);
                 category.upgradePanel.SetActive(true);
                 category.UpdateUpgradeCostAndNameText();
-            }
+            }   
         }
 
         private void CloseOtherUpgradePanels()

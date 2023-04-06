@@ -99,7 +99,7 @@ namespace Shop.UpgradeCategories
             CrewTrainingUpgrade upgradeOne = new()
             {
                 Cost = 100,
-                TimeBetweenSteals = 4,
+                timeBetweenSteals = 4,
                 UpgradeName = "Sleight of Hand"
             };
             crewTrainingTrack.Upgrades.Add(upgradeOne);
@@ -107,7 +107,7 @@ namespace Shop.UpgradeCategories
             CrewTrainingUpgrade upgradeTwo = new()
             {
                 Cost = 10000,
-                TimeBetweenSteals = 3,
+                timeBetweenSteals = 3,
                 UpgradeName = "Lock Picking"
             };
             crewTrainingTrack.Upgrades.Add(upgradeTwo);
@@ -115,7 +115,7 @@ namespace Shop.UpgradeCategories
             CrewTrainingUpgrade upgradeThree = new()
             {
                 Cost = 1000000,
-                TimeBetweenSteals = 2,
+                timeBetweenSteals = 2,
                 UpgradeName = "Safe Cracking"
             };
             crewTrainingTrack.Upgrades.Add(upgradeThree);
@@ -123,7 +123,7 @@ namespace Shop.UpgradeCategories
             CrewTrainingUpgrade upgradeFour = new()
             {
                 Cost = 10000000,
-                TimeBetweenSteals = 1,
+                timeBetweenSteals = 1,
                 UpgradeName = "Burglary"
             };
             crewTrainingTrack.Upgrades.Add(upgradeFour);
@@ -131,7 +131,7 @@ namespace Shop.UpgradeCategories
             CrewTrainingUpgrade upgradeFive = new()
             {
                 Cost = 100000000,
-                TimeBetweenSteals = 0.5f,
+                timeBetweenSteals = 0.5f,
                 UpgradeName = "Master Thief"
             };
             crewTrainingTrack.Upgrades.Add(upgradeFive);
@@ -144,15 +144,23 @@ namespace Shop.UpgradeCategories
             string baseMessage = "New crew members can be assigned to banks and will steal automatically.";
             string effect = "Effect: Add one new crew member";
             Upgrade upgrade = UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel];
-            string cost = $"Cost: {upgrade.Cost}";
+            string cost = $"Cost: ${upgrade.Cost}";
+            string name = $"{upgrade.UpgradeName}";
             
-            return baseMessage + "\n\n" + effect + "\n\n" + cost;
+            return name + "\n\n" + baseMessage  + "\n\n" + effect + "\n\n" + cost;
         }
 
         private string GetTrackDescriptionForCrewTraining()
         {
             string baseMessage = "Crew members will steal more often.";
-            return "TBD";
+            Upgrade upgrade = UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel];
+            string name = $"{upgrade.UpgradeName}";
+            string cost = $"Cost: ${upgrade.Cost}";
+            string effect = $"Effect: Time between steals reduced to {((CrewTrainingUpgrade)upgrade).timeBetweenSteals} seconds";
+            
+            string message = name + "\n\n" + baseMessage + "\n\n" + effect + "\n\n" + cost;
+            
+            return message;
         }
     }
 }

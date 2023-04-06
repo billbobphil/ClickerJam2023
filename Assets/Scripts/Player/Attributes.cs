@@ -4,14 +4,14 @@ namespace Player
 {
     public class Attributes : MonoBehaviour
     {
-        public int baseAmountToSteal = 1;
-        public int intimidationLevel = 0;
-        public int intimidationMultiplier = 10;
-        public float timeBetweenCrewMemberSteals = 5f;
+        public int baseAmountToSteal = 1; //used
+        public int intimidationLevel = 0; //used
+        public int intimidationMultiplier = 10; //used
+        public float timeBetweenCrewMemberSteals = 5f; //used
         
-        public int criticalClickMultiplier = 10;
-        public float criticalClickSpawnDelayMinimum = 5f;
-        public float criticalClickSpawnDelayMaximum = 10f;
+        public int criticalClickMultiplier = 10; //used
+        public float criticalClickSpawnDelayMinimum = 5f; //used
+        public float criticalClickSpawnDelayMaximum = 10f; //used
         public float criticalClickDuration = 5f;
         
         public float failHeistChance = 50f;

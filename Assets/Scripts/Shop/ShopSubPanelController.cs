@@ -27,13 +27,6 @@ namespace Shop
 
         public void ShowSubShopPanel(UpgradeCategory upgradeCategory)
         {
-            if (upgradeCategory == _currentCategory)
-            {
-                gameObject.SetActive(false);
-                _currentCategory = null;
-                return;
-            }
-            
             titleText.text = upgradeCategory.categoryName;
             descriptionText.text = upgradeCategory.description;
             gameObject.SetActive(true);

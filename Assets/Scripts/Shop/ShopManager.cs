@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Player;
 using Shop.UpgradeCategories;
 using Shop.Upgrades;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Shop
 {
@@ -21,7 +23,41 @@ namespace Shop
             _playerWallet = GameObject.FindWithTag("Player").GetComponent<Wallet>();
             tooltipPanel.SetActive(false);
         }
-        
+
+        private void LateUpdate()
+        {
+            foreach(UpgradeCategory category in upgradeCategories)
+            {
+                bool canAffordUpgrade = false;
+                foreach(KeyValuePair<int, UpgradeTrack> pair in category.UpgradeTracks)
+                {
+                    UpgradeTrack track = pair.Value;
+                    
+                    if (track.CurrentLevel >= track.Upgrades.Count)
+                    {
+                        continue;
+                    }
+                    
+                    Upgrade upgrade = track.Upgrades[track.CurrentLevel];
+                    ulong cost = upgrade.Cost;
+                    if (_playerWallet.money >= cost)
+                    {
+                        canAffordUpgrade = true;
+                        break;
+                    }
+                }
+
+                if (canAffordUpgrade)
+                {
+                    category.shopButton.GetComponent<Image>().color = Color.yellow;
+                }
+                else
+                {
+                    category.shopButton.GetComponent<Image>().color = Color.white;
+                }
+            }
+        }
+
         public void OnUpgradeCategoryClick(int id)
         {
             CloseOtherUpgradePanels();

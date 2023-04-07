@@ -9,7 +9,7 @@ namespace Shop.Upgrades
 
         public override void ApplyUpgrade()
         {
-            attributes.timeBetweenCrewMemberSteals = timeBetweenSteals;
+            attributes.SetTimeBetweenCrewMemberSteals(timeBetweenSteals);
         }
     }
 }

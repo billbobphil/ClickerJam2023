@@ -140,10 +140,10 @@ namespace Shop.UpgradeCategories
         
         private string GetTrackDescriptionForPlanning()
         {
-            string baseMessage = "Better planning increases the frequency that critical opportunities will appear.";
+            string baseMessage = "Better planning increases the frequency that perfect timing opportunities will appear.";
             
             Upgrade upgrade = UpgradeTracks[0].Upgrades[UpgradeTracks[0].CurrentLevel];
-            string effect = $"Effect: minimum time between critical opportunities becomes {((PlanningUpgrade)upgrade).newMinTimeBetweenSpawns} seconds, and the maximum time between critical opportunities becomes {((PlanningUpgrade)upgrade).newMaxTimeBetweenSpawns} seconds.";
+            string effect = $"Effect: minimum time between perfect timing opportunities becomes {((PlanningUpgrade)upgrade).newMinTimeBetweenSpawns} seconds, and the maximum time between perfect timing opportunities becomes {((PlanningUpgrade)upgrade).newMaxTimeBetweenSpawns} seconds.";
             string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string name = $"{upgrade.UpgradeName}";
             
@@ -152,10 +152,10 @@ namespace Shop.UpgradeCategories
         
         private string GetTrackDescriptionForPractice()
         {
-            string baseMessage = "Practice makes perfect. The more you practice, the more effective your critical opportunities will be.";
+            string baseMessage = "Practice makes perfect. The more you practice, the more effective your perfect timing opportunities will be.";
             
             Upgrade upgrade = UpgradeTracks[1].Upgrades[UpgradeTracks[1].CurrentLevel];
-            string effect = $"Effect: critical opportunities now multiply your earnings by {((PracticeUpgrade)upgrade).newCriticalClickModifier}.";
+            string effect = $"Effect: perfect timing now multiplies your earnings by {((PracticeUpgrade)upgrade).newCriticalClickModifier}.";
             string cost = $"Cost: {StaticHelpers.FormatMoney(upgrade.Cost)}";
             string name = $"{upgrade.UpgradeName}";
             

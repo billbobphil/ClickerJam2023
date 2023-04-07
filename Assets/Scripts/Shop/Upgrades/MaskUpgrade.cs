@@ -5,7 +5,7 @@
         public int newMultiplier;
         public override void ApplyUpgrade()
         {
-            attributes.intimidationMultiplier = newMultiplier;
+            attributes.SetIntimidationMultiplier(newMultiplier);
         }
     }
 }

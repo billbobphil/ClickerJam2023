@@ -1,6 +1,8 @@
 ﻿using Crew;
+using Player;
 using Shop.Upgrades;
 using TMPro;
+using UnityEngine;
 using Utilities;
 
 namespace Shop.UpgradeCategories
@@ -13,9 +15,12 @@ namespace Shop.UpgradeCategories
         public TextMeshProUGUI crewTrainingCostText;
         public TextMeshProUGUI crewTrainingUpgradeNameText;
         public int numberOfPossibleCrewMembers = 100;
-        
+        public TextMeshProUGUI crewMemberCountText;
+        private CrewManager _playerCrew;
+
         private void Start()
         {
+            _playerCrew = GameObject.FindWithTag("Player").GetComponent<CrewManager>();
             UpgradeTracks.Add(0, BuildNewCrewMemberTrack());
             UpgradeTracks.Add(1, BuildCrewTrainingTrack());
         }

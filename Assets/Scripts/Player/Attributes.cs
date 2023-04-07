@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace Player
 {
@@ -16,10 +17,63 @@ namespace Player
         
         public float failHeistChance = 50f;
         public float heistFailReduction = 0f;
+        
+        public TextMeshProUGUI baseAmountToStealText;
+        public TextMeshProUGUI intimidationLevelText;
+        public TextMeshProUGUI intimidationMultiplierText;
+        public TextMeshProUGUI totalTakeText;
+        public TextMeshProUGUI criticalMultiplierText;
+        public TextMeshProUGUI heistFailureChanceText;
+        public TextMeshProUGUI timeBetweenCrewMemberStealsText;
 
+        private void Start()
+        {
+            baseAmountToStealText.text = baseAmountToSteal.ToString();
+            intimidationLevelText.text = intimidationLevel.ToString();
+            intimidationMultiplierText.text = intimidationMultiplier.ToString();
+            totalTakeText.text = GetAmountToSteal().ToString();
+            criticalMultiplierText.text = criticalClickMultiplier.ToString();
+            float heistFailChance = failHeistChance - heistFailReduction;
+            heistFailureChanceText.text = $"{heistFailChance:n0}%";
+            timeBetweenCrewMemberStealsText.text = timeBetweenCrewMemberSteals.ToString();
+        }
+        
         public long GetAmountToSteal()
         {
             return baseAmountToSteal + intimidationLevel * intimidationMultiplier;
+        }
+
+        public void IncreaseIntimidationLevel(int amountToIncreaseBy)
+        {
+            intimidationLevel += amountToIncreaseBy;
+            intimidationLevelText.text = intimidationLevel.ToString();
+            totalTakeText.text = GetAmountToSteal().ToString();
+        }
+        
+        public void SetIntimidationMultiplier(int newMultiplier)
+        {
+            intimidationMultiplier = newMultiplier;
+            intimidationMultiplierText.text = intimidationMultiplier.ToString();
+            totalTakeText.text = GetAmountToSteal().ToString();
+        }
+        
+        public void SetCriticalClickerModifier(int newModifier)
+        {
+            criticalClickMultiplier = newModifier;
+            criticalMultiplierText.text = criticalClickMultiplier.ToString();
+        }
+        
+        public void SetHeistFailReduction(float newReduction)
+        {
+            heistFailReduction = newReduction;
+            float heistFailChance = failHeistChance - heistFailReduction;
+            heistFailureChanceText.text = $"{heistFailChance:n0}%";
+        }
+        
+        public void SetTimeBetweenCrewMemberSteals(float newTime)
+        {
+            timeBetweenCrewMemberSteals = newTime;
+            timeBetweenCrewMemberStealsText.text = timeBetweenCrewMemberSteals.ToString();
         }
     }
 }

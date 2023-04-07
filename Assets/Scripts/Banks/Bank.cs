@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -21,12 +22,26 @@ namespace Banks
         private Attributes _playerAttributes;
         public GameObject GotMoneyPrefab;
         public GameObject CaughtByCopsPrefab;
+        public TextMeshPro availableCrewMembersText;
+
+        public List<string> bankNames = new List<string>()
+        {
+            "Whackatone",
+            "Banksy",
+            "Bankopolis",
+            "McBankface",
+            "Bank"
+        };
 
         private void Awake()
         {
             moneyRemaining = startingMoney;
             UpdateMoneyText();
-            bankNameText.text = "<Cool Name> Bank";
+            
+            //Get a random entry from bankNames
+            string bankName = bankNames[Random.Range(0, bankNames.Count)];
+
+            bankNameText.text = $"{bankName} Bank";
             _playerAttributes = GameObject.FindWithTag("Player").GetComponent<Attributes>();
         }
         
@@ -46,17 +61,27 @@ namespace Banks
         {
             crewMembersAtBankText.text = $"{_crewMembersAtBank}";
         }
-        
+
         public long StealMoney(long amountToSteal, Vector3 mousePosition = default)
         {
             if (isBankrupt)
             {
                 return 0;
             }
+
+            Vector3 position;
+            
+            if (mousePosition != default)
+            {
+                position = mousePosition;
+            }
+            else
+            {
+                position = crewMembersAtBankText.transform.position;
+            }
             
             if (Random.Range(0f, 100f) > _playerAttributes.failHeistChance - _playerAttributes.heistFailReduction)
             {
-                // Debug.Log("Stole Money!");
                 long actualAmountToSteal = amountToSteal;
 
                 if (amountToSteal > moneyRemaining)
@@ -75,21 +100,14 @@ namespace Banks
                 UpdateMoneyText();
                 OnMoneyStolen?.Invoke((ulong)amountToSteal);
 
-                if (mousePosition != default)
-                {
-                    GameObject newObject = Instantiate(GotMoneyPrefab, mousePosition, Quaternion.identity);
-                    newObject.GetComponent<TextMeshPro>().text = $"${amountToSteal:n0}";
-                }
+                GameObject newObject = Instantiate(GotMoneyPrefab, position, Quaternion.identity);
+                newObject.GetComponent<TextMeshPro>().text = $"${amountToSteal:n0}";
                 
                 return amountToSteal;
             }
             else
             {
-                // Debug.Log("COPS GOTCHA!");
-                if(mousePosition != default)
-                {
-                    Instantiate(CaughtByCopsPrefab, mousePosition, Quaternion.identity);
-                }
+                Instantiate(CaughtByCopsPrefab, position, Quaternion.identity);
                 
                 return -1;
             }

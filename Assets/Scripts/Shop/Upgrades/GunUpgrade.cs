@@ -5,7 +5,7 @@
         public int amountToIncreaseBy;
         public override void ApplyUpgrade()
         {
-            attributes.intimidationLevel += amountToIncreaseBy;
+            attributes.IncreaseIntimidationLevel(amountToIncreaseBy);
         }
     }
 }

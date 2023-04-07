@@ -11,6 +11,7 @@ namespace Shop.UpgradeCategories
         public int id;
         public readonly Dictionary<int, UpgradeTrack> UpgradeTracks = new();
         public GameObject upgradePanel;
+        public GameObject shopButton;
 
         public void Awake()
         {

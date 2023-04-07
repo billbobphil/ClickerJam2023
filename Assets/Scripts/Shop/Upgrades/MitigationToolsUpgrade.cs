@@ -5,7 +5,7 @@
         public float newHeistFailReduction;
         public override void ApplyUpgrade()
         {
-            attributes.heistFailReduction = newHeistFailReduction;
+            attributes.SetHeistFailReduction(newHeistFailReduction);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Shop.UpgradeCategories
             {
                 Cost = 100,
                 UpgradeName = "Water Pistols",
-                amountToIncreaseBy = 1
+                amountToIncreaseBy = 2
             };
             
             GunUpgrade upgradeTwo = new()

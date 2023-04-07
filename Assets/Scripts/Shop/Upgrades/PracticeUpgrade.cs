@@ -5,7 +5,7 @@
         public int newCriticalClickModifier;
         public override void ApplyUpgrade()
         {
-            attributes.criticalClickMultiplier = newCriticalClickModifier;
+            attributes.SetCriticalClickerModifier(newCriticalClickModifier);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Banks;
 using Crew;
+using TMPro;
 using UnityEngine;
 
 namespace Player
@@ -10,6 +11,7 @@ namespace Player
         public List<CrewMember> crew = new();
         public List<CrewMember> availableCrewMembers = new();
         public List<CrewMember> assignedCrewMembers = new();
+        public TextMeshProUGUI availableCrewMembersText;
 
         private void Awake()
         {
@@ -24,6 +26,7 @@ namespace Player
             Debug.Log("Got new crew member!");
             crew.Add(crewMember);
             availableCrewMembers.Add(crewMember);
+            availableCrewMembersText.text = availableCrewMembers.Count.ToString();
         }
 
         public void RemoveCrewMemberFromBank(Bank bank)
@@ -35,6 +38,7 @@ namespace Player
                 member.bank.RemoveCrewMember();
                 assignedCrewMembers.Remove(member);
                 availableCrewMembers.Add(member);
+                availableCrewMembersText.text = availableCrewMembers.Count.ToString();
             }
             else
             {
@@ -52,6 +56,7 @@ namespace Player
                 bank.AddCrewMember();
                 availableCrewMembers.Remove(crewMember);
                 assignedCrewMembers.Add(crewMember);
+                availableCrewMembersText.text = availableCrewMembers.Count.ToString();
             }
             else
             {

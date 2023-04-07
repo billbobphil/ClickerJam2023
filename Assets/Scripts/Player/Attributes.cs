@@ -7,7 +7,7 @@ namespace Player
         public int baseAmountToSteal = 1; //used
         public int intimidationLevel = 0; //used
         public int intimidationMultiplier = 10; //used
-        public float timeBetweenCrewMemberSteals = 5f; //used
+        public float timeBetweenCrewMemberSteals = 10f; //used
         
         public int criticalClickMultiplier = 10; //used
         public float criticalClickSpawnDelayMinimum = 5f; //used

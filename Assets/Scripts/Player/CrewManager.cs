@@ -3,6 +3,8 @@ using Banks;
 using Crew;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using Utilities;
 
 namespace Player
 {
@@ -12,6 +14,10 @@ namespace Player
         public List<CrewMember> availableCrewMembers = new();
         public List<CrewMember> assignedCrewMembers = new();
         public TextMeshProUGUI availableCrewMembersText;
+        public Pulsate crewMemberPulsate;
+        public Image crewMemberIcon;
+        private Color membersAvailableColor = new Color(255f/255f, 232f/255f, 55f/255f);
+        private Color noMembersAvailableColor = new Color(255f/255f, 255f/255f, 255f/255f);
 
         private void Awake()
         {
@@ -27,6 +33,7 @@ namespace Player
             crew.Add(crewMember);
             availableCrewMembers.Add(crewMember);
             availableCrewMembersText.text = availableCrewMembers.Count.ToString();
+            UpdateCrewMemberIcon();
         }
 
         public void RemoveCrewMemberFromBank(Bank bank)
@@ -39,6 +46,8 @@ namespace Player
                 assignedCrewMembers.Remove(member);
                 availableCrewMembers.Add(member);
                 availableCrewMembersText.text = availableCrewMembers.Count.ToString();
+                member.RemoveFromBank();
+                UpdateCrewMemberIcon();
             }
             else
             {
@@ -57,11 +66,26 @@ namespace Player
                 availableCrewMembers.Remove(crewMember);
                 assignedCrewMembers.Add(crewMember);
                 availableCrewMembersText.text = availableCrewMembers.Count.ToString();
+                UpdateCrewMemberIcon();
             }
             else
             {
                 Debug.Log("No available crew members");
                 //TODO: show a message of some sort
+            }
+        }
+
+        private void UpdateCrewMemberIcon()
+        {
+            if (availableCrewMembers.Count > 0)
+            {
+                crewMemberPulsate.enabled = true;
+                crewMemberIcon.color = membersAvailableColor;
+            }
+            else
+            {
+                crewMemberPulsate.enabled = false;
+                crewMemberIcon.color = noMembersAvailableColor;
             }
         }
     }

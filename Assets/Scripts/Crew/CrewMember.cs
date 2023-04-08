@@ -17,7 +17,7 @@ namespace Crew
         
         public void StartStealing()
         {
-            StartCoroutine(StealMoney());
+            StartCoroutine(nameof(StealMoney));
         }
         
         public IEnumerator StealMoney()
@@ -26,7 +26,10 @@ namespace Crew
             {
                 yield return new WaitForSecondsRealtime(_playerAttributes.timeBetweenCrewMemberSteals);
                 // Debug.Log("Crew member stole");
-                bank.StealMoney(_playerAttributes.GetAmountToSteal());    
+                if (bank is not null)
+                {
+                    bank.StealMoney(_playerAttributes.GetAmountToSteal());
+                }
             }
         }
 
@@ -39,7 +42,7 @@ namespace Crew
         public void RemoveFromBank()
         {
             bank = null;
-            StopCoroutine(StealMoney());
+            StopCoroutine(nameof(StealMoney));
         }
     }
 }

@@ -7,12 +7,12 @@ namespace Player
     {
         public int baseAmountToSteal = 1; //used
         public int intimidationLevel = 0; //used
-        public int intimidationMultiplier = 10; //used
-        public float timeBetweenCrewMemberSteals = 10f; //used
+        public int intimidationMultiplier = 1; //used
+        public float timeBetweenCrewMemberSteals = 5f; //used
         
-        public int criticalClickMultiplier = 10; //used
-        public float criticalClickSpawnDelayMinimum = 5f; //used
-        public float criticalClickSpawnDelayMaximum = 10f; //used
+        public int criticalClickMultiplier = 2; //used
+        public float criticalClickSpawnDelayMinimum = 20f; //used
+        public float criticalClickSpawnDelayMaximum = 40f; //used
         public float criticalClickDuration = 5f;
         
         public float failHeistChance = 50f;

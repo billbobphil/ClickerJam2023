@@ -29,37 +29,65 @@ namespace Shop.UpgradeCategories
             
             GunUpgrade upgradeOne = new()
             {
-                Cost = 100,
+                Cost = 10,
                 UpgradeName = "Water Pistols",
                 amountToIncreaseBy = 2
             };
             
             GunUpgrade upgradeTwo = new()
             {
-                Cost = 10000,
-                UpgradeName = "Hand Guns",
-                amountToIncreaseBy = 10
+                Cost = 100,
+                UpgradeName = "Cap Guns Hand Guns",
+                amountToIncreaseBy = 8
             };
             
             GunUpgrade upgradeThree = new()
             {
-                Cost = 1000000,
-                UpgradeName = "Semi-Automatics",
-                amountToIncreaseBy = 10
+                Cost = 1000,
+                UpgradeName = "BB Guns Semi-Automatics",
+                amountToIncreaseBy = 20
             };
             
             GunUpgrade upgradeFour = new()
             {
-                Cost = 10000000,
-                UpgradeName = "Automatics",
-                amountToIncreaseBy = 10
+                Cost = 10000,
+                UpgradeName = "Semi-Automatics",
+                amountToIncreaseBy = 120
             };
             
             GunUpgrade upgradeFive = new()
             {
-                Cost = 1000000000,
+                Cost = 100000,
+                UpgradeName = "Full-Automatics",
+                amountToIncreaseBy = 150
+            };
+
+            GunUpgrade upgradeSix = new()
+            {
+                Cost = 1000000,
+                UpgradeName =  "Military-Grade",
+                amountToIncreaseBy = 300
+            };
+            
+            GunUpgrade upgradeSeven = new()
+            {
+                Cost = 100000000,
                 UpgradeName = "Heavy Artillery",
-                amountToIncreaseBy = 100
+                amountToIncreaseBy = 900
+            };
+            
+            GunUpgrade upgradeEight = new()
+            {
+                Cost = 1000000000,
+                UpgradeName = "Nuclear Weapons",
+                amountToIncreaseBy = 1500
+            };
+            
+            GunUpgrade upgradeNine = new()
+            {
+                Cost = 10000000000,
+                UpgradeName = "Alien Technology",
+                amountToIncreaseBy = 3000
             };
             
             gunsTrack.Upgrades.Add(upgradeOne);
@@ -67,6 +95,10 @@ namespace Shop.UpgradeCategories
             gunsTrack.Upgrades.Add(upgradeThree);
             gunsTrack.Upgrades.Add(upgradeFour);
             gunsTrack.Upgrades.Add(upgradeFive);
+            gunsTrack.Upgrades.Add(upgradeSix);
+            gunsTrack.Upgrades.Add(upgradeSeven);
+            gunsTrack.Upgrades.Add(upgradeEight);
+            gunsTrack.Upgrades.Add(upgradeNine);
             
             return gunsTrack;
         }
@@ -83,37 +115,72 @@ namespace Shop.UpgradeCategories
             
             MaskUpgrade upgradeOne = new()
             {
-                Cost = 100,
+                Cost = 10,
                 UpgradeName = "Medical Masks",
-                newMultiplier = 15
+                newMultiplier = 2
             };
             
             MaskUpgrade upgradeTwo = new()
             {
-                Cost = 10000,
+                Cost = 1000,
                 UpgradeName = "Ski Masks",
-                newMultiplier = 30
+                newMultiplier = 5
             };
             
             MaskUpgrade upgradeThree = new()
             {
-                Cost = 1000000,
-                UpgradeName = "Hockey Masks",
-                newMultiplier = 50
+                Cost = 5000,
+                UpgradeName = "Animal Masks",
+                newMultiplier = 7
             };
-            
+
             MaskUpgrade upgradeFour = new()
             {
-                Cost = 10000000,
-                UpgradeName = "Clown Masks",
-                newMultiplier = 100
+                Cost = 25000,
+                UpgradeName = "Hockey Masks",
+                newMultiplier = 10
             };
             
             MaskUpgrade upgradeFive = new()
             {
+                Cost = 100000,
+                UpgradeName = "Clown Masks",
+                newMultiplier = 15
+            };
+            
+            MaskUpgrade upgradeSix = new()
+            {
+                Cost = 1000000,
+                UpgradeName = "Gas Masks",
+                newMultiplier = 25
+            };
+            
+            MaskUpgrade upgradeSeven = new()
+            {
+                Cost = 10000000,
+                UpgradeName = "Halloween Masks",
+                newMultiplier = 35
+            };
+            
+            MaskUpgrade upgradeEight = new()
+            {
+                Cost = 100000000,
+                UpgradeName = "Metal Masks",
+                newMultiplier = 50
+            };
+            
+            MaskUpgrade upgradeNine = new()
+            {
                 Cost = 1000000000,
-                UpgradeName = "Infamous Masks",
-                newMultiplier = 1000
+                UpgradeName = "Custom Masks",
+                newMultiplier = 75
+            };
+            
+            MaskUpgrade upgradeTen = new()
+            {
+                Cost = 10000000000,
+                UpgradeName = "Prolific Masks",
+                newMultiplier = 100
             };
             
             masksTrack.Upgrades.Add(upgradeOne);
@@ -121,6 +188,11 @@ namespace Shop.UpgradeCategories
             masksTrack.Upgrades.Add(upgradeThree);
             masksTrack.Upgrades.Add(upgradeFour);
             masksTrack.Upgrades.Add(upgradeFive);
+            masksTrack.Upgrades.Add(upgradeSix);
+            masksTrack.Upgrades.Add(upgradeSeven);
+            masksTrack.Upgrades.Add(upgradeEight);
+            masksTrack.Upgrades.Add(upgradeNine);
+            masksTrack.Upgrades.Add(upgradeTen);
             
             return masksTrack;
         }

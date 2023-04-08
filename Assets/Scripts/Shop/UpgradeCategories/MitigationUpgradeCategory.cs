@@ -37,37 +37,82 @@ namespace Shop.UpgradeCategories
             {
                 Cost = 10000,
                 newHeistFailReduction = 10f,
-                UpgradeName = "Cell Jammer"
+                UpgradeName = "Gags"
             };
             
             toolsTrack.Upgrades.Add(upgradeTwo);
             
             MitigationToolsUpgrade upgradeThree = new()
             {
-                Cost = 1000000,
-                newHeistFailReduction = 20f,
-                UpgradeName = "Vault Drills"
+                Cost = 25000,
+                newHeistFailReduction = 15f,
+                UpgradeName = "Cell Jammer"
             };
             
             toolsTrack.Upgrades.Add(upgradeThree);
             
             MitigationToolsUpgrade upgradeFour = new()
             {
-                Cost = 10000000,
-                newHeistFailReduction = 35f,
-                UpgradeName = "Get-Away Van"
+                Cost = 50000,
+                newHeistFailReduction = 20f,
+                UpgradeName = "Vault Drills"
             };
             
             toolsTrack.Upgrades.Add(upgradeFour);
             
             MitigationToolsUpgrade upgradeFive = new()
             {
-                Cost = 1000000000,
-                newHeistFailReduction = 50f,
-                UpgradeName = "Private Jet"
+                Cost = 100000,
+                newHeistFailReduction = 25f,
+                UpgradeName = "Get-Away Van"
             };
             
             toolsTrack.Upgrades.Add(upgradeFive);
+            
+            MitigationToolsUpgrade upgradeSix = new()
+            {
+                Cost = 1000000,
+                newHeistFailReduction = 30f,
+                UpgradeName = "Charted Sailings"
+            };
+            
+            toolsTrack.Upgrades.Add(upgradeSix);
+            
+            MitigationToolsUpgrade upgradeSeven = new()
+            {
+                Cost = 10000000,
+                newHeistFailReduction = 35f,
+                UpgradeName = "Helicopter"
+            };
+            
+            toolsTrack.Upgrades.Add(upgradeSeven);
+            
+            MitigationToolsUpgrade upgradeEight = new()
+            {
+                Cost = 100000000,
+                newHeistFailReduction = 40f,
+                UpgradeName = "Private Jet"
+            };
+            
+            toolsTrack.Upgrades.Add(upgradeEight);
+            
+            MitigationToolsUpgrade upgradeNine = new()
+            {
+                Cost = 1000000000,
+                newHeistFailReduction = 45f,
+                UpgradeName = "Time Machine"
+            };
+            
+            toolsTrack.Upgrades.Add(upgradeNine);
+            
+            MitigationToolsUpgrade upgradeTen = new()
+            {
+                Cost = 10000000000,
+                newHeistFailReduction = 50f,
+                UpgradeName = "The One Ring"
+            };
+            
+            toolsTrack.Upgrades.Add(upgradeTen);
 
             return toolsTrack;
         }

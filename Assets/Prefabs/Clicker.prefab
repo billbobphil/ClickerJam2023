@@ -356,8 +356,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clicker: {fileID: 598187731950604326}
-  baseScale: 1.5
-  expandScale: 1.65
+  baseScale: 2.25
+  expandScale: 2.65
   isCriticalClicker: 0
 --- !u!114 &598187731950604326
 MonoBehaviour:

@@ -299,8 +299,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -544,7 +544,7 @@ RectTransform:
   m_GameObject: {fileID: 812956000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.4205406}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 189677882}
@@ -685,7 +685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -11.037}
+  m_AnchoredPosition: {x: 0, y: -8.28}
   m_SizeDelta: {x: 30.0789, y: 7.1539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1246957430
@@ -716,7 +716,7 @@ RectTransform:
   m_GameObject: {fileID: 1246957430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.4205406}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 80758698}
@@ -947,8 +947,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1027,7 +1027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000023842, y: -4.96}
+  m_AnchoredPosition: {x: -0.00000023842, y: -4.25}
   m_SizeDelta: {x: 43.718, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3320965546027077667
@@ -1119,8 +1119,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1224,6 +1224,13 @@ MonoBehaviour:
   crewMembersAtBankText: {fileID: 1711598368}
   GotMoneyPrefab: {fileID: 3321738554274109662, guid: c373ad215ccf28348847708c2dba45db, type: 3}
   CaughtByCopsPrefab: {fileID: 2795528243836532165, guid: e41c6bc77889fb64cb13a2799f313663, type: 3}
+  availableCrewMembersText: {fileID: 0}
+  bankNames:
+  - Whackatone
+  - Banksy
+  - Bankopolis
+  - McBankface
+  - Bank
 --- !u!1 &3320965547575007880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,8 +1358,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

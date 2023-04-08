@@ -22,8 +22,9 @@ namespace Banks
         private Attributes _playerAttributes;
         public GameObject GotMoneyPrefab;
         public GameObject CaughtByCopsPrefab;
-        public TextMeshPro availableCrewMembersText;
-
+        public AudioSource MoneyStolenAudioSource;
+        public AudioSource CopsBustedAudioSource;
+        
         public List<string> bankNames = new List<string>()
         {
             "Whackatone",
@@ -102,13 +103,14 @@ namespace Banks
 
                 GameObject newObject = Instantiate(GotMoneyPrefab, position, Quaternion.identity);
                 newObject.GetComponent<TextMeshPro>().text = $"${amountToSteal:n0}";
+                MoneyStolenAudioSource.Play();
                 
                 return amountToSteal;
             }
             else
             {
                 Instantiate(CaughtByCopsPrefab, position, Quaternion.identity);
-                
+                CopsBustedAudioSource.Play();
                 return -1;
             }
         }

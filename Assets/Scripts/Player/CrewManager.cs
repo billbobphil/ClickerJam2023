@@ -36,7 +36,7 @@ namespace Player
             UpdateCrewMemberIcon();
         }
 
-        public void RemoveCrewMemberFromBank(Bank bank)
+        public bool RemoveCrewMemberFromBank(Bank bank)
         {
             Debug.Log("Trying to remove crew member");
             if (assignedCrewMembers.Count > 0)
@@ -48,14 +48,16 @@ namespace Player
                 availableCrewMembersText.text = availableCrewMembers.Count.ToString();
                 member.RemoveFromBank();
                 UpdateCrewMemberIcon();
+                return true;
             }
             else
             {
                 Debug.Log("No crew members at that bank");
+                return false;
             }
         }
         
-        public void AssignCrewMemberToBank(Bank bank)
+        public bool AssignCrewMemberToBank(Bank bank)
         {
             Debug.Log("Trying to assign crew member");
             if (availableCrewMembers.Count > 0)
@@ -67,11 +69,13 @@ namespace Player
                 assignedCrewMembers.Add(crewMember);
                 availableCrewMembersText.text = availableCrewMembers.Count.ToString();
                 UpdateCrewMemberIcon();
+                return true;
             }
             else
             {
                 Debug.Log("No available crew members");
                 //TODO: show a message of some sort
+                return false;
             }
         }
 

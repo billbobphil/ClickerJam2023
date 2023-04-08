@@ -38,56 +38,56 @@ namespace Shop.UpgradeCategories
             {
                 Cost = 100,
                 UpgradeName = "Cap Guns Hand Guns",
-                amountToIncreaseBy = 8
+                amountToIncreaseBy = 20
             };
             
             GunUpgrade upgradeThree = new()
             {
                 Cost = 1000,
                 UpgradeName = "BB Guns Semi-Automatics",
-                amountToIncreaseBy = 20
+                amountToIncreaseBy = 120
             };
             
             GunUpgrade upgradeFour = new()
             {
                 Cost = 10000,
                 UpgradeName = "Semi-Automatics",
-                amountToIncreaseBy = 120
+                amountToIncreaseBy = 200
             };
             
             GunUpgrade upgradeFive = new()
             {
                 Cost = 100000,
                 UpgradeName = "Full-Automatics",
-                amountToIncreaseBy = 150
+                amountToIncreaseBy = 500
             };
 
             GunUpgrade upgradeSix = new()
             {
                 Cost = 1000000,
                 UpgradeName =  "Military-Grade",
-                amountToIncreaseBy = 300
+                amountToIncreaseBy = 1500
             };
             
             GunUpgrade upgradeSeven = new()
             {
                 Cost = 100000000,
                 UpgradeName = "Heavy Artillery",
-                amountToIncreaseBy = 900
+                amountToIncreaseBy = 3000
             };
             
             GunUpgrade upgradeEight = new()
             {
                 Cost = 1000000000,
                 UpgradeName = "Nuclear Weapons",
-                amountToIncreaseBy = 1500
+                amountToIncreaseBy = 6000
             };
             
             GunUpgrade upgradeNine = new()
             {
                 Cost = 10000000000,
                 UpgradeName = "Alien Technology",
-                amountToIncreaseBy = 3000
+                amountToIncreaseBy = 15000
             };
             
             gunsTrack.Upgrades.Add(upgradeOne);
@@ -124,63 +124,63 @@ namespace Shop.UpgradeCategories
             {
                 Cost = 1000,
                 UpgradeName = "Ski Masks",
-                newMultiplier = 5
+                newMultiplier = 7
             };
             
             MaskUpgrade upgradeThree = new()
             {
                 Cost = 5000,
                 UpgradeName = "Animal Masks",
-                newMultiplier = 7
+                newMultiplier = 25
             };
 
             MaskUpgrade upgradeFour = new()
             {
                 Cost = 25000,
                 UpgradeName = "Hockey Masks",
-                newMultiplier = 10
+                newMultiplier = 100
             };
             
             MaskUpgrade upgradeFive = new()
             {
                 Cost = 100000,
                 UpgradeName = "Clown Masks",
-                newMultiplier = 15
+                newMultiplier = 250
             };
             
             MaskUpgrade upgradeSix = new()
             {
                 Cost = 1000000,
                 UpgradeName = "Gas Masks",
-                newMultiplier = 25
+                newMultiplier = 500
             };
             
             MaskUpgrade upgradeSeven = new()
             {
                 Cost = 10000000,
                 UpgradeName = "Halloween Masks",
-                newMultiplier = 35
+                newMultiplier = 1000
             };
             
             MaskUpgrade upgradeEight = new()
             {
                 Cost = 100000000,
                 UpgradeName = "Metal Masks",
-                newMultiplier = 50
+                newMultiplier = 3000
             };
             
             MaskUpgrade upgradeNine = new()
             {
                 Cost = 1000000000,
                 UpgradeName = "Custom Masks",
-                newMultiplier = 75
+                newMultiplier = 6000
             };
             
             MaskUpgrade upgradeTen = new()
             {
                 Cost = 10000000000,
                 UpgradeName = "Prolific Masks",
-                newMultiplier = 100
+                newMultiplier = 10000
             };
             
             masksTrack.Upgrades.Add(upgradeOne);

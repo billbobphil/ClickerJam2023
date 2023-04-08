@@ -11,18 +11,18 @@ namespace Shop
         private TextMeshProUGUI titleText;
         [SerializeField]
         private TextMeshProUGUI descriptionText;
+        public GameObject subShopCloseTriggerPanel;
 
-        private UpgradeCategory _currentCategory;
-        
         private void Awake()
         {
             gameObject.SetActive(false);
+            subShopCloseTriggerPanel.SetActive(false);
         }
         
         public void CloseSubShopPanel()
         {
-            _currentCategory = null;
             gameObject.SetActive(false);
+            subShopCloseTriggerPanel.SetActive(false);
         }
 
         public void ShowSubShopPanel(UpgradeCategory upgradeCategory)
@@ -30,7 +30,7 @@ namespace Shop
             titleText.text = upgradeCategory.categoryName;
             descriptionText.text = upgradeCategory.description;
             gameObject.SetActive(true);
-            _currentCategory = upgradeCategory;
+            subShopCloseTriggerPanel.SetActive(true);
         }
     }
 }

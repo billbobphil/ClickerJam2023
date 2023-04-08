@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Player;
+using Shop.Helpers;
 using Shop.UpgradeCategories;
 using Shop.Upgrades;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Shop
 {
@@ -17,6 +19,8 @@ namespace Shop
         public TextMeshProUGUI tooltipTitle;
         public TextMeshProUGUI tooltipDescription;
         private Wallet _playerWallet;
+        public ShopButtonAudio shopButtonAudio;
+        public Pulsate upgradeArrowPulsate;
 
         private void Awake()
         {
@@ -26,6 +30,7 @@ namespace Shop
 
         private void LateUpdate()
         {
+            bool canAffordAnyUpgrade = false;
             foreach(UpgradeCategory category in upgradeCategories)
             {
                 bool canAffordUpgrade = false;
@@ -50,12 +55,15 @@ namespace Shop
                 if (canAffordUpgrade)
                 {
                     category.shopButton.GetComponent<Image>().color = Color.yellow;
+                    canAffordAnyUpgrade = true;
                 }
                 else
                 {
                     category.shopButton.GetComponent<Image>().color = Color.white;
                 }
             }
+
+            upgradeArrowPulsate.enabled = canAffordAnyUpgrade;
         }
 
         public void OnUpgradeCategoryClick(int id)
@@ -94,7 +102,7 @@ namespace Shop
             if (track.CurrentLevel >= track.Upgrades.Count)
             {
                 Debug.Log("At max upgrade level");
-                //TODO: implement UI messaging
+                shopButtonAudio.PlayFailSound();
                 return;
             }
                 
@@ -112,12 +120,23 @@ namespace Shop
                 track.CurrentLevel++;
                 //Update cost text
                 category.UpdateUpgradeCostAndNameText();
-                tooltipDescription.text = track.GetTrackDescription();
+                
+                if (track.CurrentLevel < track.Upgrades.Count)
+                {
+                    tooltipDescription.text = track.GetTrackDescription();    
+                }
+                else
+                {
+                    tooltipDescription.text = "Max level reached!";
+                }
+                
+                shopButtonAudio.PlayPurchaseSound();
             }
             else
             {
                 //TODO: messaging about cost
                 Debug.Log("Cant afford this!");
+                shopButtonAudio.PlayFailSound();
             }
         }
 
@@ -129,7 +148,15 @@ namespace Shop
             UpgradeTrack track = category.UpgradeTracks[trackId];
 
             tooltipTitle.text = track.TrackName;
-            tooltipDescription.text = track.GetTrackDescription();
+            
+            if (track.CurrentLevel < track.Upgrades.Count)
+            {
+                tooltipDescription.text = track.GetTrackDescription();
+            }
+            else
+            {
+                tooltipDescription.text = "Max level reached!";
+            }
 
             tooltipPanel.SetActive(true);
         }

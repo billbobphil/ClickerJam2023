@@ -9,6 +9,8 @@ namespace Player
     {
         public ulong money = 0;
         public TextMeshProUGUI moneyText;
+        public GameObject lostMoneyPrefab;
+        public Transform lostMoneySpawnPoint;
 
         private void OnEnable()
         {
@@ -34,6 +36,8 @@ namespace Player
         public void RemoveMoney(ulong amountToRemove)
         {
             money -= amountToRemove;
+            GameObject createdFloater = Instantiate(lostMoneyPrefab, lostMoneySpawnPoint);
+            createdFloater.GetComponent<TextMeshPro>().text = StaticHelpers.FormatMoney(amountToRemove);
             UpdateMoneyRemainingText();
         }
 

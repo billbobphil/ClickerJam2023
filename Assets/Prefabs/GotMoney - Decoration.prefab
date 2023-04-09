@@ -116,8 +116,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8702825810894276565, guid: c373ad215ccf28348847708c2dba45db, type: 3}
+      propertyPath: xTravelDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702825810894276565, guid: c373ad215ccf28348847708c2dba45db, type: 3}
+      propertyPath: yTravelDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702825810894276565, guid: c373ad215ccf28348847708c2dba45db, type: 3}
       propertyPath: floatTimeBeforeDestroy
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c373ad215ccf28348847708c2dba45db, type: 3}

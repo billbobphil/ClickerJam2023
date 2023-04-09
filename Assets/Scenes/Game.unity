@@ -35666,7 +35666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -284.35864, y: -242.49481}
+  m_AnchoredPosition: {x: -284.3586, y: -242.49481}
   m_SizeDelta: {x: -568.7172, y: -484.9895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1760991930
@@ -54580,6 +54580,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1407693235}
         m_TargetAssemblyTypeName: Shop.Helpers.ShopButtonAudio, Assembly-CSharp
         m_MethodName: PlayClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2082369990}
+        m_TargetAssemblyTypeName: Shop.Helpers.ShopButtonAnimator, Assembly-CSharp
+        m_MethodName: ShrinkButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

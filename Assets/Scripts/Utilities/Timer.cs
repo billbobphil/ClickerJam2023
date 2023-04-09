@@ -42,6 +42,16 @@ namespace Utilities
             _isRunning = true;
         }
 
+        public void SetTime(float time)
+        {
+            _time = time;
+        }
+
+        public float GetTime()
+        {
+            return _time;
+        }
+
         public void PauseTimer()
         {
             _isRunning = false;
@@ -87,7 +97,7 @@ namespace Utilities
             UpdateTimerText();
         }
 
-        private void UpdateTimerText()
+        public void UpdateTimerText()
         {
             if (_time <= 0)
             {

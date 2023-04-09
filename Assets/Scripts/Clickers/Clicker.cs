@@ -2,6 +2,7 @@
 using Banks;
 using Player;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Clickers
 {
@@ -11,6 +12,7 @@ namespace Clickers
         public ClickerClickHandler normalClickerHandler;
         public ClickerClickHandler criticalClickHandler;
         private Attributes _playerAttributes;
+        public AudioSource criticalClickerSpawnSound;
 
         private void Awake()
         {
@@ -43,6 +45,7 @@ namespace Clickers
                 criticalClickHandler.transform.position = bounds.center + new Vector3(offsetX, offsetY, 0);
 
                 criticalClickHandler.gameObject.SetActive(true);
+                criticalClickerSpawnSound.Play();
                 yield return new WaitForSecondsRealtime(_playerAttributes.criticalClickDuration);
                 criticalClickHandler.gameObject.SetActive(false);
             }

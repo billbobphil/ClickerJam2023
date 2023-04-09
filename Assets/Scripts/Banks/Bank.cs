@@ -103,14 +103,32 @@ namespace Banks
 
                 GameObject newObject = Instantiate(GotMoneyPrefab, position, Quaternion.identity);
                 newObject.GetComponent<TextMeshPro>().text = $"${amountToSteal:n0}";
-                MoneyStolenAudioSource.Play();
+                if (mousePosition != default)
+                {
+                    MoneyStolenAudioSource.Play();
+                }
+
+                if (mousePosition == default && _crewMembersAtBank < 15)
+                {
+                    MoneyStolenAudioSource.Play();
+                }
                 
                 return amountToSteal;
             }
             else
             {
                 Instantiate(CaughtByCopsPrefab, position, Quaternion.identity);
-                CopsBustedAudioSource.Play();
+                
+                if (mousePosition != default)
+                {
+                    CopsBustedAudioSource.Play();
+                }
+
+                if (mousePosition == default && _crewMembersAtBank < 15)
+                {
+                    CopsBustedAudioSource.Play();
+                }
+                
                 return -1;
             }
         }
